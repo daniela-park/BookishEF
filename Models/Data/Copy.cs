@@ -15,4 +15,8 @@ public class Copy
     public Condition Condition { get; set; } = Condition.Pristine;
 
     public List<Loan> LoanHistory { get; set; } = [];
+
+    public bool HasLiveLoan => LoanHistory.Any(loan => loan.DateReturned == null);
+
+    public Loan? LiveLoan => LoanHistory.SingleOrDefault(loan => loan.DateReturned == null);
 }
