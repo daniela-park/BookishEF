@@ -1,0 +1,32 @@
+@using Bookish.Models.Data;
+@using Bookish.Enums;
+@model Book;
+
+@{
+    ViewData["Title"] = @Model.Title;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Add a new copy</h1>
+    <form method="post">
+        <div>
+            <!-- <label for="BookId">Please enter the book id:</label>
+            <input type="text" id="BookId" name="BookId"> -->
+            <h1 class="display-4">@Model.Title</h1>
+            <h2>By @Model.Author</h2>
+            <p>Current Number of copies: @Model.Copies.Count</p>
+        </div>
+        <div>
+            <p Condition>Please enter the condition of the new copy:</p>
+            @{
+                foreach (var condition in Enum.GetValues<Condition>())
+                {
+                    <input type="radio" id="@condition" name="Condition" value="@condition">
+                    <label for="@condition">@condition</label><br>
+                }
+            }
+            <br>  
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+@using Bookish.Models.View;
+@model BooksViewModel;
+
+@{
+    ViewData["Title"] = "Unregister Books";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Here are our lovely books:</h1>
+    <table> 
+        <thead>
+            <tr>
+                <th scope="col">BookId</th>
+                <th scope="col">BookTitle</th>
+                <th scope="col">BookAuthor</th>
+                <th scope="col"></th>
+            <tr>
+        </thead>
+<tbody>
+        @{
+            foreach (var book in Model.Books)
+            {
+
+                    @* <a asp-area="" asp-controller="Books" asp-action="ViewIndividual" asp-route-id="@book.Id">
+                        @book.Title <small>by @book.Author</small>
+                    </a> *@
+                    <tr>
+                        <td>@book.Id</td>
+                        <td>@book.Title</td>
+                        <td>@book.Author</td>
+                            <td><form method="post" asp-area="" asp-controller="Books" asp-action="Unregister" asp-route-id="@book.Id">
+                                <input type="submit" class="btn btn-outline-primary" value="Unregister" />
+                                </form>
+                            </td>
+                    </tr>
+            }
+        }
+</tbody>
+    <table>
+</div>

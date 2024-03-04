@@ -8,5 +8,32 @@
 <div class="text-center">
     <h1 class="display-4">@Model.Title</h1>
     <h2>By @Model.Author</h2>
-    <p>Number of copies: @Model.Copies.Count</p>
+    <p>Number of copies: @Model.Copies.Count()</p>
+    <table> 
+        <thead>
+            <tr>
+                <th scope="col">BookCopyId</th>
+                <th scope="col">Condition</th>
+            <tr>
+        </thead>
+<tbody>
+    @{
+            foreach (var copy in Model.Copies)
+            {
+
+                    @* <a asp-area="" asp-controller="Books" asp-action="ViewIndividual" asp-route-id="@book.Id">
+                        @book.Title <small>by @book.Author</small>
+                    </a> *@
+    <tr>
+                        <td>@copy.Id</td>
+                        <td>@copy.Condition</td>
+                        <!-- <td><a asp-area="" asp-controller="Books" asp-action="AddCopy" asp-route-id="@copy.Id">
+                        <input type="button" class="btn btn-outline-primary" value="Add Copy" />
+                        </a>
+                    </td> -->
+                    </tr>
+            }
+    }
+</tbody>
+    <table>
 </div>
